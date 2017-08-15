@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginEnd="@dimen/space.small"
+    android:layout_marginStart="@dimen/space.small"
+    android:orientation="vertical"
+    >
+
+  <TextView
+      android:id="@id/item_main_tv_name"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:gravity="center_horizontal"
+      android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+      tools:text="格力电器"
+      />
+
+  <TextView
+      android:id="@id/item_main_tv_code"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:gravity="center_horizontal"
+      android:textAppearance="@style/TextAppearance.AppCompat.Caption"
+      tools:text="SZ000651"
+      />
+
+</LinearLayout>

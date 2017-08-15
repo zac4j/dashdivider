@@ -1,0 +1,18 @@
+<resources>
+  <string name="app_name">DashDivider</string>
+  <string name="empty_stock_name">***</string>
+  <string name="empty_stock_code">-.-.-.</string>
+
+  <string-array name="stocks">
+    <item>新经典;603096</item>
+    <item>长盈精密;300115</item>
+    <item>天齐锂业;002466</item>
+    <item>亿帆医药;002019</item>
+    <item>中国平安;601318</item>
+    <item>金达威;002626</item>
+    <item>小天鹅A;000418</item>
+    <item>中泰化学;002092</item>
+    <item>弘亚数控;002833</item>
+    <item>台海核电;002366</item>
+  </string-array>
+</resources>
