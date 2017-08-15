@@ -32,7 +32,7 @@ public class GridDashDivider extends RecyclerView.ItemDecoration {
    * Creates a divider {@link RecyclerView.ItemDecoration} that can be used with a
    * {@link LinearLayoutManager}.
    */
-  public GridDashDivider(int dashGap, int dashLength, int dashThickness, int color,
+  private GridDashDivider(int dashGap, int dashLength, int dashThickness, int color,
       boolean[] drawer, int[] offset) {
 
     mPaint = new Paint(Paint.ANTI_ALIAS_FLAG);

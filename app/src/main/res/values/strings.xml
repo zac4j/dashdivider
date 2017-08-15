@@ -2,6 +2,8 @@
   <string name="app_name">DashDivider</string>
   <string name="empty_stock_name">***</string>
   <string name="empty_stock_code">-.-.-.</string>
+  <string name="grid_divider">Grid dash divider:</string>
+  <string name="divider">Dash divider:</string>
 
   <string-array name="stocks">
     <item>新经典;603096</item>

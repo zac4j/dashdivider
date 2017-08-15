@@ -4,9 +4,32 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="zac4j.com.sample.MainActivity"
     >
 
+  <TextView
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="@string/grid_divider"
+      android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+      />
+  <android.support.v7.widget.RecyclerView
+      android:id="@id/main_rv_grid"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layerType="software"
+      android:padding="@dimen/space.small"
+      tools:listitem="@layout/list_item_main"
+      />
+
+  <TextView
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="@dimen/space.large"
+      android:text="@string/divider"
+      android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+      />
   <android.support.v7.widget.RecyclerView
       android:id="@id/main_rv_list"
       android:layout_width="match_parent"

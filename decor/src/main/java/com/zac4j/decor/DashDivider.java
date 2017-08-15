@@ -34,7 +34,7 @@ public class DashDivider extends RecyclerView.ItemDecoration {
    *
    * @param orientation Divider orientation. Should be {@link #HORIZONTAL} or {@link #VERTICAL}.
    */
-  public DashDivider(int dashGap, int dashLength, int dashThickness, int color, int orientation) {
+  private DashDivider(int dashGap, int dashLength, int dashThickness, int color, int orientation) {
 
     mPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
     mPaint.setColor(color);
@@ -115,7 +115,7 @@ public class DashDivider extends RecyclerView.ItemDecoration {
     private int dashLength;
     private int dashThickness;
     private int color;
-    private int orientation;
+    private int orientation = VERTICAL;
 
     public Builder(Context context) {
       this.context = context;
