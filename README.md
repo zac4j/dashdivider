@@ -45,7 +45,7 @@ The usage is really simple.
 ```
 
 **Then, If your RecyclerView hold a LinearLayoutManager, Use DashDivider:**
-```
+```java
   private void updateUi() {
     ...
     LinearLayoutManager mLayoutManager = new LinearLayoutManager(mCtx);
@@ -63,7 +63,7 @@ The usage is really simple.
 ```
 
 **Else if your RecyclerView hold a GridLayoutManager, User GridDashDivider:**
-```
+```java
   private static final int DEFAULT_SPAN_COUNT = 4;
   private void updateUi() {
     ...
@@ -94,7 +94,7 @@ The usage is really simple.
 | color         | (@NonNull @IntRes int color)                                        | both            | color of dash divider                  |
 | orientation   | (@NonNull @RecyclerViewRes int orientation)                         | DashDivider     | orientation of RecyclerView            |
 | drawer        | (boolean left, boolean top, boolean right, boolean bottom) | GridDashDivider | which grid aspect to draw dash divider |
-| offset        | (int left, int top,  int right, int bottom)                | GridDashDivider | offset of diff grid aspect             |
+| offset        | (int left, int top,  int right, int bottom)                | GridDashDivider | offset of grid aspect divider             |
 
 ## Contributions
 
