@@ -78,12 +78,12 @@ The usage is really simple.
 
 | Attribute     | Parameter                                                  | Divider         | Description                            |
 |-------------|----------------------------------------------------|--------------|-----------------------------------|
-| dashGap       | (int gap)                                                  | both            | distance between two dash line         |
-| dashLength    | (int length)                                               | both            | length of one dash line                |
-| dashThickness | (int thickness)                                            | both            | height of one dash line                |
-| color         | (@IntRes int color)                                        | both            | color of dash divider                  |
-| orientation   | (@RecyclerViewRes int orientation)                         | DashDivider     | orientation of RecyclerView            |
-| drawer        | (boolean left, boolean top,  boolean right,boolean bottom) | GridDashDivider | which grid aspect to draw dash divider |
+| dashGap       | (@NonNull int gap)                                                  | both            | distance between two dash line         |
+| dashLength    | (@NonNull int length)                                               | both            | length of one dash line                |
+| dashThickness | (@NonNull int thickness)                                            | both            | height of one dash line                |
+| color         | (@NonNull @IntRes int color)                                        | both            | color of dash divider                  |
+| orientation   | (@NonNull @RecyclerViewRes int orientation)                         | DashDivider     | orientation of RecyclerView            |
+| drawer        | (boolean left, boolean top, boolean right, boolean bottom) | GridDashDivider | which grid aspect to draw dash divider |
 | offset        | (int left, int top,  int right, int bottom)                | GridDashDivider | offset of diff grid aspect             |
 
 ## Contributions
