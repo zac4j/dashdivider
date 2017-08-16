@@ -1,4 +1,4 @@
-package zac4j.com.sample;
+package com.zac4j.sample;
 
 /**
  * Stock Model

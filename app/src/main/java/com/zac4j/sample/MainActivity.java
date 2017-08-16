@@ -1,4 +1,4 @@
-package zac4j.com.sample;
+package com.zac4j.sample;
 
 import android.content.Context;
 import android.support.v4.content.ContextCompat;
