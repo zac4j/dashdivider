@@ -22,9 +22,25 @@ compile 'com.zac4j.decor:dashdivider:0.0.1'
 
 The usage is really simple.
 
-**If your RecyclerView hold a LinearLayoutManager, Use DashDivider:**
+**First set RecyclerView `android:layerType="software"` attribute: **
+```xml
+<android.support.v7.widget.RecyclerView
+    android:id="@id/main_rv_list"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layerType="software"
+    android:padding="@dimen/space.small"
+    tools:listitem="@layout/list_item_main"
+    />
 ```
-RecyclerView.ItemDecoration dashDivider = new DashDivider.Builder(this)
+
+**Then, If your RecyclerView hold a LinearLayoutManager, Use DashDivider:**
+```
+  private void updateUi() {
+    ...
+    LinearLayoutManager mLayoutManager = new LinearLayoutManager(mCtx);
+    mRecyclerView.setLayoutManager(mLayoutManager);
+    RecyclerView.ItemDecoration dashDivider = new DashDivider.Builder(mCtx)
         .dashGap(5)
         .dashLength(5)
         .dashThickness(3)
@@ -32,14 +48,16 @@ RecyclerView.ItemDecoration dashDivider = new DashDivider.Builder(this)
         .orientation(mLayoutManager.getOrientation())
         .build();
     mRecyclerView.addItemDecoration(dashDivider);
+    ...
+  }
 ```
 
 **Else if your RecyclerView hold a GridLayoutManager, User GridDashDivider:**
 ```
-private static final int DEFAULT_SPAN_COUNT = 4;
-
-mGridRecyclerView.setLayoutManager(new GridLayoutManager(this, DEFAULT_SPAN_COUNT));
-    RecyclerView.ItemDecoration gridDivider = new GridDashDivider.Builder(this)
+    private static final int DEFAULT_SPAN_COUNT = 4;
+    ...
+    mGridRecyclerView.setLayoutManager(new GridLayoutManager(mCtx, DEFAULT_SPAN_COUNT));
+    RecyclerView.ItemDecoration gridDivider = new GridDashDivider.Builder(mCtx)
         .dashGap(5)
         .dashLength(5)
         .dashThickness(3)
@@ -49,6 +67,9 @@ mGridRecyclerView.setLayoutManager(new GridLayoutManager(this, DEFAULT_SPAN_COUN
         .build();
     mGridRecyclerView.addItemDecoration(gridDivider);
 ```
+
+**You could check sample project usage:**
+[Sample Project][sample]
 
 ## Contributions
 
@@ -71,3 +92,5 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 ```
+
+[sample]:https://github.com/zac4j/dashdivider/blob/master/app/src/main/java/com/zac4j/sample/MainActivity.java
