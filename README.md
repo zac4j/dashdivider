@@ -5,7 +5,7 @@ Dashed divider for RecyclerView
 
 **Grid Dash Divider:**
 
-<img src="http://7xom3t.com1.z0.glb.clouddn.com/dash_divider_grid.png" width="557" height="187" />
+<img src="http://7xom3t.com1.z0.glb.clouddn.com/grid_dash_divider.png" width="557" height="187" />
 
 **Divider Description:**
 
