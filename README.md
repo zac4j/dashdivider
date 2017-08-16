@@ -22,7 +22,7 @@ compile 'com.zac4j.decor:dashdivider:0.0.1'
 
 The usage is really simple.
 
-**First set RecyclerView `android:layerType="software"` attribute: **
+**First set RecyclerView `android:layerType="software"` attribute:**
 ```xml
 <android.support.v7.widget.RecyclerView
     android:id="@id/main_rv_list"
@@ -54,7 +54,8 @@ The usage is really simple.
 
 **Else if your RecyclerView hold a GridLayoutManager, User GridDashDivider:**
 ```
-    private static final int DEFAULT_SPAN_COUNT = 4;
+  private static final int DEFAULT_SPAN_COUNT = 4;
+  private void updateUi() {
     ...
     mGridRecyclerView.setLayoutManager(new GridLayoutManager(mCtx, DEFAULT_SPAN_COUNT));
     RecyclerView.ItemDecoration gridDivider = new GridDashDivider.Builder(mCtx)
@@ -66,6 +67,7 @@ The usage is really simple.
         .offset(10, 10, 10, 10)
         .build();
     mGridRecyclerView.addItemDecoration(gridDivider);
+  }
 ```
 
 **You could check sample project usage:**
