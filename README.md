@@ -1,6 +1,10 @@
 # Dash Divider
 Dashed divider for RecyclerView
 
+## ScreenShots
+
+<img src="http://7xom3t.com1.z0.glb.clouddn.com/dash_divider_spec.png" width="557" height="240" />  <img src="http://7xom3t.com1.z0.glb.clouddn.com/dash_divider_grid.png" width="500" height="197" />
+
 ## Installation
 
 **Gradle:**
