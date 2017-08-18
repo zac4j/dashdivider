@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
         .dashLength(5)
         .dashThickness(3)
         .color(ContextCompat.getColor(this, R.color.colorPrimary))
-        .drawer(true, false, true, false)
+        .drawer(true, true, true, true)
         .offset(10, 10, 10, 10)
         .build();
     stockGridView.addItemDecoration(dashDivider);
