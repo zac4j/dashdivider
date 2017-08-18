@@ -139,7 +139,7 @@ public class DashDivider extends RecyclerView.ItemDecoration {
 
     public Builder dashGap(int gap) {
       if (gap <= 0) {
-        throw new IllegalArgumentException("Dash gap must greater than 0.");
+        throw new IllegalArgumentException("Dash gap must be greater than 0.");
       }
       this.dashGap = gap;
       return this;
@@ -147,7 +147,7 @@ public class DashDivider extends RecyclerView.ItemDecoration {
 
     public Builder dashLength(int length) {
       if (length <= 0) {
-        throw new IllegalArgumentException("Dash length must greater than 0.");
+        throw new IllegalArgumentException("Dash length must be greater than 0.");
       }
       this.dashLength = length;
       return this;
@@ -155,7 +155,7 @@ public class DashDivider extends RecyclerView.ItemDecoration {
 
     public Builder dashThickness(int thickness) {
       if (thickness <= 0) {
-        throw new IllegalArgumentException("Dash thickness must greater than 0.");
+        throw new IllegalArgumentException("Dash thickness must be greater than 0.");
       }
       this.dashThickness = thickness;
       return this;
@@ -176,13 +176,13 @@ public class DashDivider extends RecyclerView.ItemDecoration {
 
     public DashDivider build() {
       if (dashGap <= 0) {
-        throw new IllegalArgumentException("Dash gap must greater than 0.");
+        throw new IllegalArgumentException("Dash gap must be greater than 0.");
       }
       if (dashLength <= 0) {
-        throw new IllegalArgumentException("Dash length must greater than 0.");
+        throw new IllegalArgumentException("Dash length must be greater than 0.");
       }
       if (dashThickness <= 0) {
-        throw new IllegalArgumentException("Dash thickness must greater than 0.");
+        throw new IllegalArgumentException("Dash thickness must be greater than 0.");
       }
       if (orientation != HORIZONTAL && orientation != VERTICAL) {
         throw new IllegalArgumentException("Illegal dashed divider orientation!");
