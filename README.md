@@ -1,6 +1,16 @@
 # Dash Divider
 Dashed divider for RecyclerView
 
+## ScreenShots
+
+**Grid Dash Divider:**
+
+<img src="http://7xom3t.com1.z0.glb.clouddn.com/grid_dash_divider.png" width="557" height="187" />
+
+**Divider Description:**
+
+<img src="http://7xom3t.com1.z0.glb.clouddn.com/dash_divider_spec.png" width="557" height="240" />
+
 ## Installation
 
 **Gradle:**
@@ -35,7 +45,7 @@ The usage is really simple.
 ```
 
 **Then, If your RecyclerView hold a LinearLayoutManager, Use DashDivider:**
-```
+```java
   private void updateUi() {
     ...
     LinearLayoutManager mLayoutManager = new LinearLayoutManager(mCtx);
@@ -53,7 +63,7 @@ The usage is really simple.
 ```
 
 **Else if your RecyclerView hold a GridLayoutManager, User GridDashDivider:**
-```
+```java
   private static final int DEFAULT_SPAN_COUNT = 4;
   private void updateUi() {
     ...
@@ -78,13 +88,13 @@ The usage is really simple.
 
 | Attribute     | Parameter                                                  | Divider         | Description                            |
 |-------------|----------------------------------------------------|--------------|-----------------------------------|
-| dashGap       | (int gap)                                                  | both            | distance between two dash line         |
-| dashLength    | (int length)                                               | both            | length of one dash line                |
-| dashThickness | (int thickness)                                            | both            | height of one dash line                |
-| color         | (@IntRes int color)                                        | both            | color of dash divider                  |
-| orientation   | (@RecyclerViewRes int orientation)                         | DashDivider     | orientation of RecyclerView            |
-| drawer        | (boolean left, boolean top,  boolean right,boolean bottom) | GridDashDivider | which grid aspect to draw dash divider |
-| offset        | (int left, int top,  int right, int bottom)                | GridDashDivider | offset of diff grid aspect             |
+| dashGap       | (@NonNull int gap)                                                  | both            | distance between two dash line         |
+| dashLength    | (@NonNull int length)                                               | both            | length of one dash line                |
+| dashThickness | (@NonNull int thickness)                                            | both            | height of one dash line                |
+| color         | (@NonNull @IntRes int color)                                        | both            | color of dash divider                  |
+| orientation   | (@NonNull @RecyclerViewRes int orientation)                         | DashDivider     | orientation of RecyclerView            |
+| drawer        | (boolean left, boolean top, boolean right, boolean bottom) | GridDashDivider | which grid aspect to draw dash divider |
+| offset        | (int left, int top,  int right, int bottom)                | GridDashDivider | offset of grid aspect divider             |
 
 ## Contributions
 
