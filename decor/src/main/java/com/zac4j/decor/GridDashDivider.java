@@ -133,8 +133,6 @@ public class GridDashDivider extends RecyclerView.ItemDecoration {
       final View child = parent.getChildAt(i);
       parent.getLayoutManager().getDecoratedBoundsWithMargins(child, mBounds);
 
-      final RecyclerView.LayoutParams params = (RecyclerView.LayoutParams) child.getLayoutParams();
-
       final int startY = mBounds.top + Math.round(child.getTranslationY()) + mOffset[1];
       final int stopY = mBounds.bottom + Math.round(child.getTranslationY()) - mOffset[3];
 
@@ -149,7 +147,7 @@ public class GridDashDivider extends RecyclerView.ItemDecoration {
         }
         // Only draw left divider.
       } else {
-        final int leftX = child.getLeft() - params.leftMargin + mOffset[0];
+        final int leftX = mBounds.left + Math.round(child.getTranslationX());
         canvas.drawLine(leftX, startY, leftX, stopY, mPaint);
       }
     }

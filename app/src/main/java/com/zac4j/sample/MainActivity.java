@@ -29,6 +29,9 @@ public class MainActivity extends AppCompatActivity {
     updateGridUi(stockGridView);
   }
 
+  /**
+   * Demonstrate for LinearLayoutManager divider
+   */
   private void updateListUi(RecyclerView stockListView) {
     stockListView.setLayoutManager(
         new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
@@ -44,6 +47,9 @@ public class MainActivity extends AppCompatActivity {
     adapter.addStockList(fetchData());
   }
 
+  /**
+   * Demonstrate for GridLayoutManager divider
+   */
   private void updateGridUi(RecyclerView stockGridView) {
     stockGridView.setLayoutManager(new GridLayoutManager(this, 4));
     RecyclerView.ItemDecoration dashDivider = new GridDashDivider.Builder(this).dashGap(5)
