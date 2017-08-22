@@ -94,19 +94,22 @@ public class GridDashDivider extends RecyclerView.ItemDecoration {
       parent.getLayoutManager().getDecoratedBoundsWithMargins(child, mBounds);
 
       final int startX = mBounds.left + Math.round(child.getTranslationX()) + mOffset[0];
-      final int stopX = mBounds.right + Math.round(child.getTranslationX()) - mOffset[2];
+      final int stopX = mBounds.right - Math.round(child.getTranslationX()) - mOffset[2];
       // Draw bottom divider.
       if (mDrawer[3]) {
-        final int bottomY = mBounds.bottom + Math.round(child.getTranslationY());
+        final int bottomY = mBounds.bottom - Math.round(child.getTranslationY()) - Math.round(
+            mPaint.getStrokeWidth());
         canvas.drawLine(startX, bottomY, stopX, bottomY, mPaint);
         // Avoiding over draw, draw most top divider.
         if (mDrawer[1] && i < spanCount) {
-          final int topY = mBounds.top + Math.round(child.getTranslationY());
+          final int topY = mBounds.top + Math.round(child.getTranslationY()) + Math.round(
+              mPaint.getStrokeWidth());
           canvas.drawLine(startX, topY, stopX, topY, mPaint);
         }
         // Only Draw top divider.
       } else {
-        final int topY = mBounds.top + Math.round(child.getTranslationY());
+        final int topY =
+            mBounds.top + Math.round(child.getTranslationY()) + Math.round(mPaint.getStrokeWidth());
         canvas.drawLine(startX, topY, stopX, topY, mPaint);
       }
     }
@@ -138,16 +141,19 @@ public class GridDashDivider extends RecyclerView.ItemDecoration {
 
       // Draw right divider.
       if (mDrawer[2]) {
-        final int rightX = mBounds.right + Math.round(child.getTranslationX());
+        final int rightX = mBounds.right - Math.round(child.getTranslationX()) - Math.round(
+            mPaint.getStrokeWidth());
         canvas.drawLine(rightX, startY, rightX, stopY, mPaint);
         // Avoiding over draw, draw most left divider.
         if (mDrawer[0] && i % spanCount == 0) {
-          final int leftX = mBounds.left + Math.round(child.getTranslationX());
+          final int leftX = mBounds.left + Math.round(child.getTranslationX()) + Math.round(
+              mPaint.getStrokeWidth());
           canvas.drawLine(leftX, startY, leftX, stopY, mPaint);
         }
         // Only draw left divider.
       } else {
-        final int leftX = mBounds.left + Math.round(child.getTranslationX());
+        final int leftX = mBounds.left + Math.round(child.getTranslationX()) + Math.round(
+            mPaint.getStrokeWidth());
         canvas.drawLine(leftX, startY, leftX, stopY, mPaint);
       }
     }
