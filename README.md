@@ -94,6 +94,7 @@ The usage is really simple.
 | color         | (@NonNull @IntRes int color)                                        | both            | color of dash divider                  |
 | orientation   | (@NonNull @RecyclerViewRes int orientation)                         | DashDivider     | orientation of RecyclerView            |
 | drawer        | (boolean left, boolean top, boolean right, boolean bottom) | GridDashDivider | which grid aspect to draw dash divider |
+| hider        | (boolean leftMost, boolean topMost, boolean rightMost, boolean bottomMost) | GridDashDivider | which aspect to hide dash divider |
 | offset        | (int left, int top,  int right, int bottom)                | GridDashDivider | offset of grid aspect divider             |
 
 ## Contributions
