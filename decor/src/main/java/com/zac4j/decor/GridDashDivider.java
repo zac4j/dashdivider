@@ -37,10 +37,21 @@ public class GridDashDivider extends RecyclerView.ItemDecoration {
 
   // Dash divider paint.
   private Paint mPaint;
-  // Draw strategy.
+  /**
+   * Draw divider strategy.
+   * Draw a grid item's left|top|right|bottom aspect divider
+   */
   private boolean[] mDrawer;
-  // Offset strategy.
-  private int[] mOffset;
+  /**
+   * Hide divider strategy:
+   * Hide left-most|top-most|right-most|bottom-most divider
+   */
+  private boolean[] mHider;
+  /**
+   * Set divider offset strategy.
+   * Set grid item's left|top|right|bottom aspect divider line offset
+   */
+  private float[] mOffset;
   // View bounds container.
   private final Rect mBounds = new Rect();
 
@@ -49,7 +60,7 @@ public class GridDashDivider extends RecyclerView.ItemDecoration {
    * {@link LinearLayoutManager}.
    */
   private GridDashDivider(int dashGap, int dashLength, int dashThickness, int color,
-      boolean[] drawer, int[] offset) {
+      boolean[] drawer, boolean[] hider, float[] offset) {
 
     mPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
     mPaint.setColor(color);
@@ -58,6 +69,7 @@ public class GridDashDivider extends RecyclerView.ItemDecoration {
     mPaint.setPathEffect(new DashPathEffect(new float[] { dashLength, dashGap }, 0));
 
     mDrawer = drawer;
+    mHider = hider;
     mOffset = offset;
   }
 
@@ -93,23 +105,26 @@ public class GridDashDivider extends RecyclerView.ItemDecoration {
       final View child = parent.getChildAt(i);
       parent.getLayoutManager().getDecoratedBoundsWithMargins(child, mBounds);
 
-      final int startX = mBounds.left + Math.round(child.getTranslationX()) + mOffset[0];
-      final int stopX = mBounds.right - Math.round(child.getTranslationX()) - mOffset[2];
+      final float startX = mBounds.left + child.getTranslationX() + mOffset[0];
+      final float stopX = mBounds.right - child.getTranslationX() - mOffset[2];
       // Draw bottom divider.
       if (mDrawer[3]) {
-        final int bottomY = mBounds.bottom - Math.round(child.getTranslationY()) - Math.round(
-            mPaint.getStrokeWidth());
-        canvas.drawLine(startX, bottomY, stopX, bottomY, mPaint);
-        // Avoiding over draw, draw most top divider.
-        if (mDrawer[1] && i < spanCount) {
-          final int topY = mBounds.top + Math.round(child.getTranslationY()) + Math.round(
-              mPaint.getStrokeWidth());
+        // If need hide right-most divider
+        if (mHider[3] && i / spanCount == (childCount / spanCount)) {
+          continue;
+        } else {
+          final float bottomY = mBounds.bottom - child.getTranslationY() - mPaint.getStrokeWidth();
+          canvas.drawLine(startX, bottomY, stopX, bottomY, mPaint);
+        }
+
+        // Avoiding over draw, draw top-most divider.
+        if (mDrawer[1] && i < spanCount && !mHider[1]) {
+          final float topY = mBounds.top + child.getTranslationY() + mPaint.getStrokeWidth();
           canvas.drawLine(startX, topY, stopX, topY, mPaint);
         }
         // Only Draw top divider.
       } else {
-        final int topY =
-            mBounds.top + Math.round(child.getTranslationY()) + Math.round(mPaint.getStrokeWidth());
+        final float topY = mBounds.top + child.getTranslationY() + mPaint.getStrokeWidth();
         canvas.drawLine(startX, topY, stopX, topY, mPaint);
       }
     }
@@ -136,24 +151,26 @@ public class GridDashDivider extends RecyclerView.ItemDecoration {
       final View child = parent.getChildAt(i);
       parent.getLayoutManager().getDecoratedBoundsWithMargins(child, mBounds);
 
-      final int startY = mBounds.top + Math.round(child.getTranslationY()) + mOffset[1];
-      final int stopY = mBounds.bottom + Math.round(child.getTranslationY()) - mOffset[3];
+      final float startY = mBounds.top + child.getTranslationY() + mOffset[1];
+      final float stopY = mBounds.bottom + child.getTranslationY() - mOffset[3];
 
       // Draw right divider.
       if (mDrawer[2]) {
-        final int rightX = mBounds.right - Math.round(child.getTranslationX()) - Math.round(
-            mPaint.getStrokeWidth());
-        canvas.drawLine(rightX, startY, rightX, stopY, mPaint);
-        // Avoiding over draw, draw most left divider.
-        if (mDrawer[0] && i % spanCount == 0) {
-          final int leftX = mBounds.left + Math.round(child.getTranslationX()) + Math.round(
-              mPaint.getStrokeWidth());
+        // If need hide right-most divider
+        if (mHider[2] && (i + 1) % spanCount == 0) {
+          continue;
+        } else {
+          final float rightX = mBounds.right - child.getTranslationX() - mPaint.getStrokeWidth();
+          canvas.drawLine(rightX, startY, rightX, stopY, mPaint);
+        }
+        // Avoiding over draw, draw left-most divider.
+        if (mDrawer[0] && i % spanCount == 0 && !mHider[0]) {
+          final float leftX = mBounds.left + child.getTranslationX() + mPaint.getStrokeWidth();
           canvas.drawLine(leftX, startY, leftX, stopY, mPaint);
         }
         // Only draw left divider.
       } else {
-        final int leftX = mBounds.left + Math.round(child.getTranslationX()) + Math.round(
-            mPaint.getStrokeWidth());
+        final float leftX = mBounds.left + child.getTranslationX() + mPaint.getStrokeWidth();
         canvas.drawLine(leftX, startY, leftX, stopY, mPaint);
       }
     }
@@ -174,7 +191,8 @@ public class GridDashDivider extends RecyclerView.ItemDecoration {
     private int dashThickness;
     private int color;
     private boolean[] drawer;
-    private int[] offset;
+    private boolean[] hider;
+    private float[] offset;
 
     public Builder(Context context) {
       this.context = context;
@@ -214,8 +232,13 @@ public class GridDashDivider extends RecyclerView.ItemDecoration {
       return this;
     }
 
-    public Builder offset(int left, int top, int right, int bottom) {
-      this.offset = new int[] { left, top, right, bottom };
+    public Builder hider(boolean left, boolean top, boolean right, boolean bottom) {
+      this.hider = new boolean[] { left, top, right, bottom };
+      return this;
+    }
+
+    public Builder offset(float left, float top, float right, float bottom) {
+      this.offset = new float[] { left, top, right, bottom };
       return this;
     }
 
@@ -229,7 +252,7 @@ public class GridDashDivider extends RecyclerView.ItemDecoration {
       if (dashThickness <= 0) {
         throw new IllegalArgumentException("Dash thickness must be greater than 0.");
       }
-      return new GridDashDivider(dashGap, dashLength, dashThickness, color, drawer, offset);
+      return new GridDashDivider(dashGap, dashLength, dashThickness, color, drawer, hider, offset);
     }
   }
 }
