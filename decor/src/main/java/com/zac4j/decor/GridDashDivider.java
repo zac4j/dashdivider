@@ -109,12 +109,22 @@ public class GridDashDivider extends RecyclerView.ItemDecoration {
       final float stopX = mBounds.right - child.getTranslationX() - mOffset[2];
       // Draw bottom divider.
       if (mDrawer[3]) {
-        // If need hide right-most divider
-        if (mHider[3] && i / spanCount == (childCount / spanCount)) {
-          continue;
-        } else {
-          final float bottomY = mBounds.bottom - child.getTranslationY() - mPaint.getStrokeWidth();
-          canvas.drawLine(startX, bottomY, stopX, bottomY, mPaint);
+        // If should hide bottom-most divider
+        if (mHider[3]) {
+          int lastCount = childCount % spanCount;
+          if (lastCount == 0) {
+            if (i < childCount - spanCount) {
+              final float bottomY =
+                  mBounds.bottom - child.getTranslationY() - mPaint.getStrokeWidth();
+              canvas.drawLine(startX, bottomY, stopX, bottomY, mPaint);
+            }
+          } else {
+            if (i < childCount - lastCount) {
+              final float bottomY =
+                  mBounds.bottom - child.getTranslationY() - mPaint.getStrokeWidth();
+              canvas.drawLine(startX, bottomY, stopX, bottomY, mPaint);
+            }
+          }
         }
 
         // Avoiding over draw, draw top-most divider.

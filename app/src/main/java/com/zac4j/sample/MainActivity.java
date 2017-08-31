@@ -56,8 +56,8 @@ public class MainActivity extends AppCompatActivity {
         .dashLength(5)
         .dashThickness(3)
         .color(ContextCompat.getColor(this, R.color.colorPrimary))
-        .drawer(true, true, true, true)
-        .hider(true, false, true, false)
+        .drawer(true, false, true, true)
+        .hider(false, false, false, true)
         .offset(1.2f, 40, 1.2f, 40)
         .build();
     stockGridView.addItemDecoration(dashDivider);
@@ -75,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
       Stock stock = new Stock(stockInfo[0], stockInfo[1]);
       stockList.add(stock);
     }
-    return stockList;
+    return stockList.subList(0, 7);
   }
 
   class StockListAdapter extends RecyclerView.Adapter<StockListAdapter.StockViewHolder> {
