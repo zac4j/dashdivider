@@ -13,7 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import com.zac4j.decor.DashDivider;
-import com.zac4j.decor.GridDashDivider;
+import com.zac4j.decor.GridDashedDivider;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,8 +22,8 @@ public class MainActivity extends AppCompatActivity {
   @Override protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
-    RecyclerView stockListView = (RecyclerView) findViewById(R.id.main_rv_list);
-    RecyclerView stockGridView = (RecyclerView) findViewById(R.id.main_rv_grid);
+    RecyclerView stockListView = findViewById(R.id.main_rv_list);
+    RecyclerView stockGridView = findViewById(R.id.main_rv_grid);
 
     updateListUi(stockListView);
     updateGridUi(stockGridView);
@@ -52,14 +52,12 @@ public class MainActivity extends AppCompatActivity {
    */
   private void updateGridUi(RecyclerView stockGridView) {
     stockGridView.setLayoutManager(new GridLayoutManager(this, 4));
-    RecyclerView.ItemDecoration dashDivider = new GridDashDivider.Builder(this).dashGap(5)
-        .dashLength(5)
-        .dashThickness(3)
-        .color(ContextCompat.getColor(this, R.color.colorPrimary))
-        .drawer(true, false, true, true)
-        .hider(false, false, false, true)
-        .offset(1.2f, 40, 1.2f, 40)
-        .build();
+    RecyclerView.ItemDecoration dashDivider =
+        new GridDashedDivider.Builder(this)
+            .drawer(true, false, true, true)
+            .hider(false, false, false, true)
+            .offset(1.2f, 40, 1.2f, 40)
+            .build();
     stockGridView.addItemDecoration(dashDivider);
 
     StockListAdapter adapter = new StockListAdapter(this);

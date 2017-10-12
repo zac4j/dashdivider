@@ -18,7 +18,6 @@
       android:id="@id/main_rv_grid"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:layerType="software"
       android:padding="@dimen/space.small"
       tools:listitem="@layout/list_item_main"
       />

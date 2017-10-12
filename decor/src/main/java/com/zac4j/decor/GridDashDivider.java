@@ -29,7 +29,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 /**
- * Dash divider for grid layout manager
+ * Dash divider for grid layout manager pure code implementation.
  * Created by Zaccc on 2017/8/15.
  */
 
